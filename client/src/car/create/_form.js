@@ -26,16 +26,16 @@ const Form = createClass({
        })
         return (
             <form name="create_car" onSubmit={this.handleSubmit}>
-              <lable>Car Type</lable>
+              <label>Car Type</label>
               <select onChange={this.changeType} >
                   <option >nothing selected</option>;
                   {options}
               </select>
-              <lable>Car name</lable>
+              <label>Car name</label>
               <input type="text" value={this.props.name} onChange={this.handleNameChange} />
-              <lable>Car price</lable>
+              <label>Car price</label>
               <input type="number" value={this.props.price}  onChange={this.handlePriceChange} />
-              <lable>Car HorsePower</lable>
+              <label>Car HorsePower</label>
               <input type="number" value={this.props.horsepower} onChange={this.handleHorsepowerChange} />
               <button type="submit">Submit</button>
             </form>

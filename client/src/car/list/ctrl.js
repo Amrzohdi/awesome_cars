@@ -16,15 +16,22 @@ export default class ListCarsCtrl extends Component {
       .then(function(response){
         _this.setState({types:response.data})
       });
-      axios.get('http://localhost:8000/cars')
+      this.getCars();
+    }
+    getCars = function(params, callback){
+      var _this = this;
+      return axios.get('http://localhost:8000/cars',{params: params})
       .then(function(response){
-        _this.setState({cars:response.data})
+        if(params)
+          callback(response.data);
+        else
+          _this.setState({cars:response.data})
       });
     }
     render() {
         return (
             <div>
-                <Form cars={this.state.cars} types={this.state.types}></Form>
+                <Form cars={this.state.cars} types={this.state.types} carSearch={this.getCars}></Form>
             </div>
         );
     }
