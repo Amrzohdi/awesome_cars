@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { render } from 'react-dom';
 import { BrowserRouter as Router , Route } from 'react-router-dom'
 
-import Car from './App'
+import CreateCarCtrl from './car/create/ctrl'
 ReactDOM.render(<App />, document.getElementById('root'));
 
 
@@ -16,7 +16,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render((
   <Router>
     <div>
-      <Route path="/cara" component={Car} />
+      <Route path="/cars/new" component={CreateCarCtrl} />
     </div>
   </Router>
 ), document.getElementById('root'))

@@ -31,6 +31,7 @@ client/coverage
 
 # production
 client/build
+Gemfile.lock
 
 # misc
 client/.DS_Store
