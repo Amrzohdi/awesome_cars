@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Form from './_form';
 import axios from 'axios'
-import { BrowserRouter as Router , Route } from 'react-router-dom'
 
 export default class CreateCarCtrl extends Component {
     state = {types: []}
