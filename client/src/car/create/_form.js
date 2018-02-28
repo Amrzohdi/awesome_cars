@@ -1,46 +1,42 @@
 import React, { Component } from 'react';
 var createClass = require('create-react-class');
-var Select = require('react-select');
-import 'react-select/dist/react-select.css'
+
 
 const Form = createClass({
-
-    getInitialState() {
-      console.log(Select)
-        return {
-            body: this.props.body || '11111',
-            title: this.props.title || '2222'
-        }
-
-    },
-    //
-    // componentWillReceiveProps(props) {
-    //     this.setState(props);
-    // },
-    //
-    // handleBodyChange(e) {
-    //     this.setState({
-    //         body: e.target.value
-    //     });
-    // },
-    //
-    // handleTitleChange(e) {
-    //     this.setState({
-    //         title: e.target.value
-    //     });
-    // },
-    //
     handleSubmit(e) {
+      e.preventDefault();
       this.props.onSubmit(this.state);
+    },
+    changeType: function(event){
+        this.setState({type_id: event.target.value});
+    },
+    handleNameChange: function(event){
+        this.setState({name: event.target.value});
+    },
+    handlePriceChange: function(event){
+        this.setState({price: event.target.value});
+    },
+    handleHorsepowerChange: function(event){
+        this.setState({horsepower: event.target.value});
     },
 
     render() {
-      console.log(this);
+      let options = this.props.types.map( (type) => {
+         return <option key={type.id} value={type.id}>{type.name}</option>;
+       })
         return (
             <form name="create_car" onSubmit={this.handleSubmit}>
-            <Select.Async name="form-field-name" loadOptions={this.props.types}/>
-              <input type="text" value={this.props.body}  />
-              <input type="text" value={this.props.title}  />
+              <lable>Car Type</lable>
+              <select onChange={this.changeType} >
+                  <option >nothing selected</option>;
+                  {options}
+              </select>
+              <lable>Car name</lable>
+              <input type="text" value={this.props.name} onChange={this.handleNameChange} />
+              <lable>Car price</lable>
+              <input type="number" value={this.props.price}  onChange={this.handlePriceChange} />
+              <lable>Car HorsePower</lable>
+              <input type="number" value={this.props.horsepower} onChange={this.handleHorsepowerChange} />
               <button type="submit">Submit</button>
             </form>
         );
