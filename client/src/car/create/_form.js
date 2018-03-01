@@ -27,7 +27,7 @@ const Form = createClass({
         return (
             <form name="create_car" onSubmit={this.handleSubmit}>
               <label>Car Type</label>
-              <select onChange={this.changeType} >
+              <select value={this.props.type_id} onChange={this.changeType} >
                   <option >nothing selected</option>;
                   {options}
               </select>
