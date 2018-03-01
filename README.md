@@ -1,24 +1,14 @@
-# README
+git clone git@github.com:Amrzohdi/awesome_cars.git
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+cd awesome_cars
+bundle install
+rake db:create db:migrate db:seed
+rails s
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+another terminal for the client-side
+____________________________________
+cd awesome_cars/client
+npm install
+npm start
