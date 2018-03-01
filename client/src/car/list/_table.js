@@ -6,9 +6,6 @@ const Form = createClass({
       gotCarsCallback: function(cars){
           this.setState({cars: cars})
       },
-      deleteCarCallback:function(response){
-        alert("Fdsaf")
-      },
       getInitialState() {
         this.props.carSearch([], this.gotCarsCallback);
         var _this = this;
