@@ -6,7 +6,8 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    render json: apply_scopes(Car).all
+
+    render json: apply_scopes(Car).all, include: {type: {only: :name} }
   end
 
   # GET /cars/1

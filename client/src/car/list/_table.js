@@ -48,6 +48,7 @@ const Form = createClass({
                       <td>{car.name}</td>
                       <td>{car.price}</td>
                       <td>{car.horsepower}</td>
+                      <td>{car.type.name}</td>
                       <td><button onClick={this.deleteCar} value={car.id} type="button">DELETE</button></td>
                       <td><a  href={"/cars/update/"+car.id} class="active">UPDATE</a></td>
                   </tr>)
@@ -74,6 +75,7 @@ const Form = createClass({
                 <th>name</th>
                 <th>price</th>
                 <th>horsepower</th>
+                <th>type</th>
                 <th>Delete</th>
                 <th>Update</th>
               </tr>
