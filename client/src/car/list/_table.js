@@ -3,30 +3,27 @@ var createClass = require('create-react-class');
 
 
 const Form = createClass({
+      gotCarsCallback: function(cars){
+          this.setState({cars: cars})
+      },
       getInitialState() {
+        this.props.carSearch([], this.gotCarsCallback);
         var _this = this;
          return {
           params: {},
-          carCallback: function(cars){
-            _this.props.cars = cars;
-          }
+          cars: [],
          }
      },
     handleNameChange: function(event){
-      // console.log(this);
-      // console.log(event.target.value);
-      var _this = this;
       this.state.params.by_name = event.target.value;
-      this.props.carSearch(this.state.params, this.state.carCallback);
+      this.props.carSearch(this.state.params, this.gotCarsCallback);
     },
     handleChangeType: function(event){
-      // console.log(this);
-      // console.log(event.target.value);
       this.state.params.by_type_id = event.target.value;
-      this.props.carSearch(this.state.params);
+      this.props.carSearch(this.state.params, this.gotCarsCallback);
     },
     render() {
-      let cars = this.props.cars.map((car) => {
+      let cars = this.state.cars.map((car) => {
          return <tr key={car.id}><td>{car.name}</td><td>{car.price}</td> <td>{car.horsepower}</td></tr>
        });
       let options = this.props.types.map((type) => {
