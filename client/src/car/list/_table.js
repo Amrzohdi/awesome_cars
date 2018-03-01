@@ -48,7 +48,8 @@ const Form = createClass({
                       <td>{car.name}</td>
                       <td>{car.price}</td>
                       <td>{car.horsepower}</td>
-                      <button onClick={this.deleteCar} value={car.id} type="button">DELETE</button>
+                      <td><button onClick={this.deleteCar} value={car.id} type="button">DELETE</button></td>
+                      <td><a  href={"/cars/update/"+car.id} class="active">UPDATE</a></td>
                   </tr>)
        });
       let options = this.props.types.map((type) => {
@@ -74,6 +75,7 @@ const Form = createClass({
                 <th>price</th>
                 <th>horsepower</th>
                 <th>Delete</th>
+                <th>Update</th>
               </tr>
                 {cars}
               </tbody>
