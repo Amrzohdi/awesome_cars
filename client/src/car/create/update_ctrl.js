@@ -9,10 +9,10 @@ export default class UpdateCarCtrl extends Component {
       if(data == undefined)
         data= {};
       var params = {
-        horsepower: data.horsepower || this.state.car.horsepower,
-        name: data.name || this.state.car.name,
-        price: data.price || this.state.car.price,
-        type_id: data.type_id || this.state.car.type_id
+        horsepower: (data.horsepower==undefined)? this.state.car.horsepower : data.horsepower,
+        name: (data.name==undefined)?  this.state.car.name : data.name,
+        price: (data.price == undefined)?  this.state.car.price : data.price,
+        type_id: (data.type_id == undefined)? this.state.car.type_id : data.type_id
       }
         axios.put('http://localhost:8000/cars/'+this.props.match.params.id, {car: params}).then(function(response){
              window.location = "/cars";

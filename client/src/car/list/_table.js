@@ -8,7 +8,6 @@ const Form = createClass({
       },
       getInitialState() {
         this.props.carSearch([], this.gotCarsCallback);
-        var _this = this;
          return {
           params: {},
           cars: [],
