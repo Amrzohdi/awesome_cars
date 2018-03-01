@@ -6,6 +6,9 @@ const Form = createClass({
       gotCarsCallback: function(cars){
           this.setState({cars: cars})
       },
+      deleteCarCallback:function(response){
+        alert("Fdsaf")
+      },
       getInitialState() {
         this.props.carSearch([], this.gotCarsCallback);
         var _this = this;
@@ -26,9 +29,27 @@ const Form = createClass({
       this.state.params.by_horsepower = event.target.value;
       this.props.carSearch(this.state.params, this.gotCarsCallback);
     },
+    deleteCar: function(event){
+      var _this = this
+      this.props.deleteCar(event.target.value, this.deleteCarCallback).then(function(response){
+        var cars = _this.state.cars;
+        _this.state.cars.forEach(function(car,index){
+          if(car.id == response.data.id)
+            cars.splice(index,1);
+        });
+        _this.setState({cars: cars})
+
+      });
+    },
     render() {
       let cars = this.state.cars.map((car) => {
-         return <tr key={car.id}><td>{car.name}</td><td>{car.price}</td> <td>{car.horsepower}</td></tr>
+         return (
+                  <tr key={car.id}>
+                      <td>{car.name}</td>
+                      <td>{car.price}</td>
+                      <td>{car.horsepower}</td>
+                      <button onClick={this.deleteCar} value={car.id} type="button">DELETE</button>
+                  </tr>)
        });
       let options = this.props.types.map((type) => {
          return <option key={type.id} value={type.id}>{type.name}</option>;
@@ -52,6 +73,7 @@ const Form = createClass({
                 <th>name</th>
                 <th>price</th>
                 <th>horsepower</th>
+                <th>Delete</th>
               </tr>
                 {cars}
               </tbody>

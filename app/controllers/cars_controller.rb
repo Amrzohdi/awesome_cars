@@ -3,7 +3,7 @@ class CarsController < ApplicationController
    has_scope :by_type
    has_scope :by_name
    has_scope :by_horsepower
-   
+
   # GET /cars
   def index
     render json: apply_scopes(Car).all
@@ -37,6 +37,7 @@ class CarsController < ApplicationController
   # DELETE /cars/1
   def destroy
     @car.destroy
+    render json: @car
   end
 
   private
