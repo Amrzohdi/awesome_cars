@@ -30,6 +30,7 @@ export default class ListCarsCtrl extends Component {
     render() {
         return (
             <div>
+                <a  href="/cars/create" class="active"> new car</a>
                 <Form deleteCar={this.deleteCar} types={this.state.types} carSearch={this.getCars}></Form>
             </div>
         );
