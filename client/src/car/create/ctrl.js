@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import Form from './_form';
-import axios from 'axios'
+var client = require('./../client');
 
 export default class CreateCarCtrl extends Component {
     state = {types: []}
+    //this is for handling the submission callback from the form
     handleSubmit(data) {
       var _this= this;
-        axios.post('http://localhost:8000/cars', {car: data}).then(function(response){
+        client.post('/cars', {car: data}).then(function(response){
              window.location = "/cars";
         });
     }
     componentDidMount() {
       var _this = this;
-      return axios.get('http://localhost:8000/types/index')
+      return client.get('/types/index')
       .then(function(response){
         _this.setState({types:response.data})
       });
