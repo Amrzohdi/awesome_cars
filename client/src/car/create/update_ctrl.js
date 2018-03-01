@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Form from './_form';
-import axios from 'axios'
+var client = require('./../client');
 
 export default class UpdateCarCtrl extends Component {
-    state = {types: [], car:{horsepower: null}}
+    state = {types: [], car:{}}
     handleSubmit(data) {
       var _this= this;
       if(data == undefined)
@@ -14,17 +14,17 @@ export default class UpdateCarCtrl extends Component {
         price: (data.price == undefined)?  this.state.car.price : data.price,
         type_id: (data.type_id == undefined)? this.state.car.type_id : data.type_id
       }
-        axios.put('http://localhost:8000/cars/'+this.props.match.params.id, {car: params}).then(function(response){
+        client.put('/cars/'+this.props.match.params.id, {car: params}).then(function(response){
              window.location = "/cars";
         });
     }
     componentDidMount() {
       var _this = this;
-      axios.get('http://localhost:8000/types/index')
+      client.get('/types/index')
       .then(function(response){
         _this.setState({types:response.data})
       });
-      axios.get('http://localhost:8000/cars/'+this.props.match.params.id)
+      client.get('/cars/'+this.props.match.params.id)
       .then(function(response){
         _this.setState({car:response.data})
       });
