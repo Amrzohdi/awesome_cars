@@ -25,6 +25,10 @@ const Form = createClass({
       this.state.params.by_horsepower = event.target.value;
       this.props.carSearch(this.state.params, this.gotCarsCallback);
     },
+    /*
+    * send the delete request and if success it searches for the deleted car
+    * rendered again from the api to delete it from the cars array.
+    */
     deleteCar: function(event){
       var _this = this
       this.props.deleteCar(event.target.value, this.deleteCarCallback).then(function(response){

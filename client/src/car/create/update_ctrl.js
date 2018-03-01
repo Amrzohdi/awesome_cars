@@ -6,6 +6,7 @@ export default class UpdateCarCtrl extends Component {
     state = {types: [], car:{}}
     handleSubmit(data) {
       var _this= this;
+      //if he didn't make any changes the data will be undefined
       if(data == undefined)
         data= {};
       var params = {
