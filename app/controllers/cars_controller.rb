@@ -1,11 +1,12 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :update, :destroy]
-
+   has_scope :by_type
+   has_scope :by_name
+   has_scope :by_horsepower
+   
   # GET /cars
   def index
-    @cars = Car.all
-
-    render json: @cars
+    render json: apply_scopes(Car).all
   end
 
   # GET /cars/1

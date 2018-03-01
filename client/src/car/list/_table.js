@@ -19,7 +19,11 @@ const Form = createClass({
       this.props.carSearch(this.state.params, this.gotCarsCallback);
     },
     handleChangeType: function(event){
-      this.state.params.by_type_id = event.target.value;
+      this.state.params.by_type = event.target.value;
+      this.props.carSearch(this.state.params, this.gotCarsCallback);
+    },
+    handleHorsepowerChange: function(event){
+      this.state.params.by_horsepower = event.target.value;
       this.props.carSearch(this.state.params, this.gotCarsCallback);
     },
     render() {
@@ -33,7 +37,9 @@ const Form = createClass({
           <div>
             <div>
               <label> search by name </label>
-              <input type="text" value={this.props.name} onChange={this.handleNameChange} />
+              <input type="text" onChange={this.handleNameChange} />
+              <label> search by horsepower </label>
+              <input type="number" onChange={this.handleHorsepowerChange} />
               <label> search by type </label>
               <select onChange={this.handleChangeType} >
                   <option >nothing selected</option>;
