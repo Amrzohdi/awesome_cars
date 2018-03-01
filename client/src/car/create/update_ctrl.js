@@ -6,7 +6,15 @@ export default class UpdateCarCtrl extends Component {
     state = {types: [], car:{horsepower: null}}
     handleSubmit(data) {
       var _this= this;
-        axios.post('http://localhost:8000/cars', {car: data}).then(function(response){
+      if(data == undefined)
+        data= {};
+      var params = {
+        horsepower: data.horsepower || this.state.car.horsepower,
+        name: data.name || this.state.car.name,
+        price: data.price || this.state.car.price,
+        type_id: data.type_id || this.state.car.type_id
+      }
+        axios.put('http://localhost:8000/cars/'+this.props.match.params.id, {car: params}).then(function(response){
              window.location = "/cars";
         });
     }
