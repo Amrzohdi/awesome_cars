@@ -65,7 +65,7 @@ const Form = createClass({
               <input type="number" onChange={this.handleHorsepowerChange} />
               <label> search by type </label>
               <select onChange={this.handleChangeType} >
-                  <option >nothing selected</option>;
+                  <option value=''>nothing selected</option>
                   {options}
               </select>
             </div>
